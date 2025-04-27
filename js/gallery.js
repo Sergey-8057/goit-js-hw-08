@@ -105,16 +105,13 @@ function handleCloseModal(e) {
 
 renderGellery();
 
-document.querySelector('.gallery').addEventListener('click', function (e) {
-  const link = e.target.closest('.gallery-link');
-  if (link) {
-    e.preventDefault();
-  }
-});
-
 container.addEventListener('click', e => {
-  if (e.target.nodeName === 'IMG') {
-    const source = e.target.dataset.source;
-    openModal(source);
+  e.preventDefault();
+
+  if (e.target.nodeName !== 'IMG') {
+    return;
   }
+
+  const source = e.target.dataset.source;
+  openModal(source);
 });
